@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {Col,Row} from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../sass/navbar.scss";
@@ -13,7 +13,7 @@ function Navbar() {
       <Col className = "nav justify-content-end">
         <Link to="/Crad" className="nav-link">
           0
-          <i class="fas fa-shopping-cart" />
+          <i className="fas fa-shopping-cart" />
           Card
         </Link>
         <Link to="/SingIn" className="nav-link">

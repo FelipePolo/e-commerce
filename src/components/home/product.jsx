@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col,Card,CardBody,CardImg,CardHeader,CardSubtitle,CardTitle,CardFooter,Button} from 'reactstrap'
+import {Col,Card,CardBody,CardImg,CardHeader,CardSubtitle,CardTitle,CardFooter} from 'reactstrap'
 import {Link} from 'react-router-dom'
 
 function Product(props) {
@@ -8,16 +8,16 @@ function Product(props) {
       <Card>
         <CardHeader>
           <Link to={`/${props.id}`}>
-            <CardImg 
+            <CardImg
               src={props.img}
               alt={props.alt}
-              style = {{height:200 + 'px' }}
+              style={{ height: 200 + "px" }}
             />
           </Link>
         </CardHeader>
         <CardBody>
           <CardTitle>
-            <Link to="/detalle">{props.name}</Link>
+            <Link to={`/${props.id}`}>{props.name}</Link>
           </CardTitle>
           <CardSubtitle>{props.descrip}</CardSubtitle>
         </CardBody>
@@ -27,7 +27,7 @@ function Product(props) {
           </span>
           <span>${props.price}</span>
           <button className="badge-pill badge-primary">
-            <i class="fas fa-shopping-cart" />
+            <i className="fas fa-shopping-cart" />
           </button>
         </CardFooter>
       </Card>

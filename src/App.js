@@ -1,9 +1,10 @@
 import React from 'react';
-import {BrowserRouter as Router,Link,Switch,Route} from 'react-router-dom' 
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom' 
 
 import {Container} from 'reactstrap'
 import Navbar from './components/navbar/Navbar'
-import Area  from './components/area/area'
+import Home  from './components/home/Home'
+import Detail from './components/details/Details'
 function App() {
   return (
     <div>
@@ -14,10 +15,10 @@ function App() {
 
           <Switch>
             <Route exact path = "/">
-              <Area></Area>
+              <Home></Home>
             </Route>
             <Route path = "/:id">
-              <h1>hola mundo!!</h1>
+              <Detail></Detail>
             </Route>
           </Switch>
         </Container>
