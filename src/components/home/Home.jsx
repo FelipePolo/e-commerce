@@ -19,16 +19,6 @@ function Home() {
 
   return (
     <Row className="area">
-      <Col xs={"3"} className="w-100">
-        <div className="pt-2">
-          <ul className=" d-flex flex-column">
-            <Link to="/categorias">TIPO 1 </Link>
-            <Link to="/categorias">TIPO 4 </Link>
-            <Link to="/categorias">TIPO 5 </Link>
-            <Link to="/categorias">TIPO 6 </Link>
-          </ul>
-        </div>
-      </Col>
       <Col className="w-100">
         <Row>
           <Col className="d-flex">
@@ -59,8 +49,8 @@ function Home() {
             productos.map((product) => {
               return (
                 <Producto
-                  key={product.id}
-                  id={product.id}
+                  key={product._id}
+                  id={product._id}
                   name={product.name}
                   descrip={product.descrip}
                   img={product.img[0]}

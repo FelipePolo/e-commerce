@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import { Row, Col, Form, FormGroup, Input, Button } from "reactstrap";
 import Carousel from "./Carousel";
 import { GetProductAction } from "../../redux/producDuck";
+import {addToCardAction} from '../../redux/cardDuck'
 import { useDispatch, useSelector } from "react-redux";
 import {useForm} from 'react-hook-form'
+
+
 
 function Details() {
   const { id } = useParams();
@@ -14,14 +17,19 @@ function Details() {
     dispath(GetProductAction(id));
   }, []);
   
-  const {handleSubmit,register} = useForm()
+  const {handleSubmit} = useForm()
   const [cantidad, setcantidad] = useState(1)
   
-  console.log(cantidad)
   const onSubmit = (data,e) => {
     console.log(data)
   }
 
+  const addtocard = () => {
+    const productocard = {
+      ...producto,cantidad: cantidad
+    }
+    dispath(addToCardAction(productocard));
+  }
 
   return (
     <Row>
@@ -41,7 +49,9 @@ function Details() {
                   <h1>{producto.name}</h1>
                   <h2>Starts ({producto.starts})</h2>
                   <p>{producto.descrip}</p>
-                  <span><del>{producto.oldprice}</del></span>
+                  <span>
+                    <del>{producto.oldprice}</del>
+                  </span>
                   <span>{producto.price}</span>
                 </div>
                 <Form inline onSubmit={handleSubmit(onSubmit)}>
@@ -52,17 +62,22 @@ function Details() {
                       placeholder="1"
                       defaultValue="1"
                       style={{ width: 60 + "px" }}
-                      onChange = {(e) => setcantidad(e.target.value)}
+                      onChange={(e) => setcantidad(e.target.value)}
                     >
-                      {
-                        [...Array(producto.stock).keys()].map((x) =>
-                        <option>{x+1}</option>)
-                      }
+                      {[...Array(producto.stock).keys()].map((x) => (
+                        <option value={x + 1} key={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
                     </Input>
-                    <Button className="ml-2" style={{ width: 300 + "px" }}>
+                    <Button
+                      type="submit"
+                      className="ml-2"
+                      style={{ width: 300 + "px" }}
+                    >
                       Comprar ahora!
                     </Button>
-                    <Button className="ml-2">
+                    <Button className="ml-2" onClick={addtocard}>
                       <i className="fas fa-shopping-cart" />
                     </Button>
                   </FormGroup>

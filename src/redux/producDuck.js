@@ -61,7 +61,6 @@ export const GetProductAction = (id) => async (dispath,getState) => {
       type:GET_PRODUCTS_LIST,
     })
     const  {data} = await axios.get(`/api/products/${id}`);
-    console.log("la data es " ,data)
     if(data){
       dispath({
         type: GET_PRODUCT,
