@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
-import { Row, Col, Form, FormGroup, Input, Button } from "reactstrap";
-import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown";
+import { Row, Col } from "reactstrap";
 import Producto from "./product";
-
+import "../../sass/home.scss";
 import { GetProductListAction } from "../../redux/producDuck";
 import { useDispatch, useSelector } from "react-redux";
+
+import introimg from "../../images/background.jpg";
+import combo1 from "../../images/combo1.jpg";
+import combo2 from "../../images/combo2.jpg";
+import combo3 from "../../images/combo3.jpg";
 
 function Home() {
   const dispath = useDispatch();
@@ -18,27 +21,20 @@ function Home() {
   }, []);
 
   return (
-    <Row className="area">
-      <Col className="w-100">
+    <Row className="home">
+      <Col className="home_intro p-1">
+        <img src={introimg} alt="Imagendeintro" />
         <Row>
-          <Col className="d-flex">
-            <Dropdown />
-            <Dropdown />
-            <Dropdown />
-          </Col>
           <Col>
-            <Form inline>
-              <FormGroup>
-                <Input
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
-                  placeholder="Busca lo que te interese"
-                />
-                <Button className="btn btn-primary ml-2">Buscar</Button>
-              </FormGroup>
-            </Form>
+            <h1>Nuevos productos cada dia.</h1>
+            <h2>20% de descuento durante 24h !</h2>
+            <button>Ir a la oferta</button>
           </Col>
+        </Row>
+      </Col>
+      <Col className="productos w-100 p-5" xs="12">
+        <Row>
+          <h1>Todos nuestros productos.</h1>
         </Row>
         <Row>
           {error ? (

@@ -27,13 +27,10 @@ function Product(props) {
               style={{ height: 200 + "px" }}
             />
           </Link>
-        </CardHeader>
-        <CardBody>
           <CardTitle>
             <Link to={`/${props.id}`}>{props.name}</Link>
           </CardTitle>
-          <CardSubtitle>{props.descrip}</CardSubtitle>
-        </CardBody>
+        </CardHeader>
         <CardFooter className="d-flex justify-content-between">
           <span>
             <del>${props.oldprice} </del>

@@ -1,0 +1,89 @@
+.mynavbar{
+  background-color: transparent;
+  .logo_container{
+    .logo{
+      border: none;
+      padding: 0;
+      padding-left: 30px;
+      img{
+        width: 50px;
+        border: none;
+      }
+    }
+  }
+  .form_container{
+    display: flex;
+    align-items: center;
+    .form-inline{
+      .form-group{
+        input{
+          height: 30px;
+          border: none;
+          width: 280px;
+          border-radius: 30px 0px 0px 30px;
+          background-color: #d1d1d1;
+          padding-left: 15px;
+          padding-bottom: 10px;
+        }
+        input::placeholder{
+          font-weight: 600;
+        }
+        button{
+          height: 30px;
+          border: none;
+          padding-top: 2px;
+          color: #000;
+          border-radius: 0px 30px 30px 0px;
+          margin-left: 0 !important;
+          background-color: #FFE500;
+        }
+      }
+    }
+
+  }
+  .nav{
+    display: flex;
+    align-items: center;
+    .badge-pill{
+      border: none;
+      position: relative;
+      height: 30px;
+      margin-right: 10px;
+      padding: auto;
+      padding-top: 2px;
+      background-color:#FFE500 ;
+      color: #000;
+      font-weight: 600;
+      span{
+        display: flex;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 30px;
+        background-color: red;
+        position: absolute;
+        top: -10px;
+        right: 0px;
+        color: #FFF;
+      }
+      p{
+        display: inline;
+        margin-right: 10px;
+      }
+    }
+    .badge-pill:hover{
+      background-color: #fff;
+      color: #000;
+    }
+    .dropdown{
+      &-menu{
+        background-color: #FFE500;
+        .dropdown-item{
+          border-radius: 30px;
+        }
+      }
+    }
+  }
+}

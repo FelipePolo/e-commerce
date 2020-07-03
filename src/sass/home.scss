@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;600;900&display=swap');
+.home {
+  font-family: 'MuseoModerno', cursive;
+  .home_intro {
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      position: absolute;
+      z-index: -1;
+      top: -50px;
+      width: 1300px;
+    }
+    margin-bottom: 10px;
+
+    .row {
+      .col{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: #FFE500;
+        align-items: center;
+        h1{
+          font-size: 50px;
+          font-weight: 800;
+          border: 4px solid #FFE500;
+          margin: 10px;
+        }
+        h2{
+          font-size: 40px;
+          text-decoration: underline;
+          margin: 10px;
+          font-weight: 800;
+        }
+        button{
+          margin-top: 30px;
+          border: none;
+          border-radius: 30px;
+          background-color: #fff;
+          padding:5px 20px;
+          font-size: 30px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+        button:hover{
+          background-color: #FFE500;
+          color: #FFF;
+        }
+      }
+    }
+  }
+  .productos{
+    background-color: #F2F2F0;
+    .row{
+      h1{
+        font-weight: 600;
+        margin-top: -20px;
+        text-decoration: underline;
+      }
+      .producto{
+        .card{
+          &-header{
+            text-align: center;
+            a{
+              font-weight: 600;
+              font-size: 18px;
+              color: #000;
+            }
+            a:hover{
+              text-decoration: none;
+            }
+          }
+          &-footer{
+            span{
+              font-weight: 600;
+              color:#1bbb06 ;
+              del{
+                color: rgb(170, 5, 5);
+              }
+
+            }
+            a{
+              background-color: #000;
+              color:#FFE500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
