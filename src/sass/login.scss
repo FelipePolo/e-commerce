@@ -1,0 +1,78 @@
+.form_conten {
+  background-image: url("../images/fondologin.jpg");
+  .col {
+    display: flex;
+    align-items: center;
+    height: 50vh;
+    .form-group {
+      background-color: #fff;
+      background-image: url("../images/fondoform.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      border-radius: 10px 10px 10px 10px;
+      padding: 5px;
+      .header {
+        position: relative;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1 {
+          background-color: #5270FF;
+          color: #FFF;
+          font-weight: 800;
+          width: 80%;
+          height: 60px;
+          border-radius: 10px;
+          padding-top: 10px;
+          text-align: center;
+          margin-top: 60px;
+          font-size: 16px;
+        }
+        img {
+          top: -55px;
+          position: absolute;
+          width: 100px;
+        }
+      }
+
+      form {
+        background-color: #5270FF;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        h1 {
+          margin-top: 30px;
+          color: #fff;
+          font-size: 16px;
+        }
+        input {
+          border-radius: 10px;
+          margin-bottom: 20px;
+          margin-left: 10px;
+          margin-right: 10px;
+          padding: 5px 20px;
+        }
+        button{
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.error_login{
+  height: 30px;
+  padding: 0px 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background-color: rgb(255, 72, 0);
+  font-size: 18px;
+  font-weight: 600;
+
+}

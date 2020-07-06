@@ -1,46 +1,59 @@
-import React, { useEffect, useState } from 'react'
-import {useForm} from 'react-hook-form'
-import {useHistory,Link} from 'react-router-dom'
-import {Row,Col,FormGroup,Form,Input} from 'reactstrap'
-import {getuserfromdb} from '../../redux/userDuck'
-import {useDispatch,useSelector} from 'react-redux'
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useHistory, Link } from "react-router-dom";
+import { Row, Col, FormGroup, Form } from "reactstrap";
+import { getuserfromdb, UpdateFailOnUser } from "../../redux/userDuck";
+import { useDispatch, useSelector } from "react-redux";
+import carrito from "../../images/carrito-compra.png";
+
+import "../../sass/login.scss";
 
 function Login() {
-  const {handleSubmit,register,errors} = useForm()
-  const [loginerror,setloginerror] = useState("")
-  const user = useSelector(store => store.user)
-  const dispath = useDispatch()
-  const history = useHistory()
+  const { handleSubmit, register, errors } = useForm();
+  const [loginerror, setloginerror] = useState(null);
+  const user = useSelector((store) => store.user);
+  const dispath = useDispatch();
+  const history = useHistory();
   useEffect(() => {
-    if(user.fail){
-      setloginerror("este email no esta registrado!")
-    }else if(user.id !== "" && !user.fail){
-      if (user.isAdmin) {
-        history.replace("/admin");
-      } else {
-        history.replace("/");
-      }
+    if (user.fail) {
+      setloginerror("este email no esta registrado!");
+    }else{
+      setloginerror(null);
     }
-  },[user])
 
-  const onSubmit = (user,e) => {
-    dispath(getuserfromdb(user))
-  }
+    return( () => {
+      dispath(UpdateFailOnUser());
+    })
+  }, [user]);
+
+  const onSubmit = (user) => {
+    dispath(getuserfromdb(user));
+  };
 
   return (
-    <Row>
+    <Row className="form_conten">
       <Col className="justify-content-center">
         <FormGroup>
-          <Form
-            onSubmit={handleSubmit(onSubmit)}
-            className="d-flex flex-column w-25"
-          >
-            <p className="bg-danger">
-              {loginerror !== "" ?  <div> no estas registrado!! <Link to="/Register">registrate aqui</Link></div> : ""}
-            </p>
+          <div className="header">
+            <img src={carrito} alt="" />
+            <h1>Logeate ahora y empieza a comprar</h1>
+            {loginerror ? (
+              <div className="error_login">
+                {" "}
+                no estas registrado,{" "}
+                <Link to="/Register">
+                  registrate aqui
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="email"
               name="email"
+              placeholder="Tu email"
               ref={register({
                 required: {
                   value: true,
@@ -57,7 +70,7 @@ function Login() {
               type="password"
               id="password"
               name="password"
-              placeholder="tu contraseña"
+              placeholder="Tu contraseña"
               ref={register({
                 required: {
                   value: true,
@@ -76,4 +89,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;

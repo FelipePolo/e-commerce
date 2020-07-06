@@ -9,13 +9,16 @@ import Car from './components/car/Car'
 import Login from './components/login/login'
 import Register from './components/register/Register'
 import Admin from './components/admin/Admin'
+import Footer from './components/footer/Fotter.jsx'
 
 function App() {
   return (
     <div>
       <Router>
         <Container fluid={true} className="pt-5">
-          <Navbar />
+          <div className = "first">
+            <Navbar />
+          </div>
 
           <Switch>
             <Route exact path="/">
@@ -37,6 +40,7 @@ function App() {
               <Detail></Detail>
             </Route>
           </Switch>
+          <Footer></Footer>
         </Container>
       </Router>
     </div>

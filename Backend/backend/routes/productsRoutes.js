@@ -11,6 +11,12 @@ routes.get("/createproduct", async (req,res) => {
       alt: req.body.alt,
       oldprice: req.body.oldprice,
       price: req.body.price,
+      categorys: {
+        genero: req.body.categorys.genero,
+        superior: req.body.categorys.superior,
+        inferior: req.body.categorys.inferior,
+        calzado: req.body.categorys.calzado,
+      },
       time: req.body.time,
       stock: req.body.stock,
     });
@@ -23,7 +29,6 @@ routes.get("/createproduct", async (req,res) => {
   } catch (error) {
     res.status(404).send("error creando el producto", error)
   }
-
 })
 
 routes.get("/products/:id", async (req, res) => {
@@ -38,6 +43,7 @@ routes.get("/products/:id", async (req, res) => {
     res.send(error)
   }
 });
+
 routes.get("/products",async (req, res) => {
   try {
     const products = await productsmodel.find((x) => x);

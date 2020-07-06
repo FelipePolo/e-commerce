@@ -44,7 +44,7 @@ function Navbar() {
               placeholder="|Buscar"
             />
             <Button className="btn btn-primary ml-2">
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </Button>
           </FormGroup>
         </Form>
@@ -59,43 +59,42 @@ function Navbar() {
           <i className="fas fa-shopping-cart" />
         </Link>
         {user.id !== "" ? (
-          // <div className="d-flex usercontainer align-items-center ">
-          //   <p className="nav-link badge-pill ">{user.name}</p>
-          //   <button
-          //     className="badge-pill logoutbtn"
-          //     onClick={() => {
-          //       dispath(logOutAction());
-          //       dispath(deleteAllCardAction());
-          //     }}
-          //   >
-          //     LOG OUT
-          //   </button>
-          // </div>
           <Dropdown
             isOpen={dropdownOpen}
             toggle={() => setDropdownOpen(!dropdownOpen)}
           >
             <DropdownToggle caret className="badge-pill">
               <p>{user.name}</p>
-              <i class="fas fa-tools"></i>
+              <i className="fas fa-tools"></i>
             </DropdownToggle>
             <DropdownMenu>
+              {user.isAdmin ? (
+                <>
+                  <DropdownItem header>Eres Administrador</DropdownItem>
+                  <DropdownItem onClick={() => history.replace("/admin")}>
+                    Panel Del Admin
+                  </DropdownItem>
+                </>
+              ) : (
+                ""
+              )}
+
               <DropdownItem header>Tienes un problema?</DropdownItem>
-              <DropdownItem onClick = {
-                () => history.replace("/Contactanos")
-              }>Contactanos</DropdownItem>
+              <DropdownItem onClick={() => history.replace("/Contactanos")}>
+                Contactanos
+              </DropdownItem>
               <DropdownItem divider />
               <DropdownItem header>Configuracion</DropdownItem>
-              <DropdownItem onClick = {
-                () => history.replace("/Configuracion")
-              }>Actualizar Perfil</DropdownItem>
-              <DropdownItem onClick = {
-                () => {
-                dispath(logOutAction());
-                dispath(deleteAllCardAction());
-              }
-              }>
-                Deslogearme <i class="fas fa-sign-in-alt"></i>
+              <DropdownItem onClick={() => history.replace("/Configuracion")}>
+                Actualizar Perfil
+              </DropdownItem>
+              <DropdownItem
+                onClick={() => {
+                  dispath(logOutAction());
+                  dispath(deleteAllCardAction());
+                }}
+              >
+                Deslogearme <i className="fas fa-sign-in-alt"></i>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>

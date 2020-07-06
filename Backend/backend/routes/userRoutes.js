@@ -4,7 +4,7 @@ import getToken from "../util";
 
 const router = express.Router();
 
-router.get("/createuser", async (req, res) => {
+router.post("/createuser", async (req, res) => {
   try {
     const user = new User({
       name: req.body.name,
@@ -12,11 +12,7 @@ router.get("/createuser", async (req, res) => {
       password: req.body.password,
       isAdmin: false,
     });
-    const newUser = await user.save();
-    res.send({
-      msg: "se creo correctamente",
-      user:newUser
-    })
+    await user.save()
   } catch (error) {
     res.send({msg:error.message})
   }
@@ -27,7 +23,6 @@ router.post("/login", async (req , res) => {
     email: req.body.email,
     password:req.body.password
   })
-  console.log(certificate)
   if(certificate){
     res.send({
       _id: certificate.id,

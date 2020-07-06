@@ -1,26 +1,44 @@
-import React from 'react'
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Row, Col, FormGroup, Form, Input } from "reactstrap";
+import "../../sass/login.scss";
+import carrito from "../../images/carrito-compra.png";
+import {useHistory} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {RegisterNewUserAction} from '../../redux/userDuck'
 
 function Register() {
   const { handleSubmit, register, errors } = useForm();
-  const onSubmit = () => {
-    console.log("hola mundo!!")
-  }
+  const dispath = useDispatch()
+  const history = useHistory()
+  const onSubmit = (data) => {
+    dispath(RegisterNewUserAction(data.name,data.email,data.password));
+    history.replace("/Login")
+  };
   return (
-    <Row>
+    <Row className="form_conten">
       <Col className="justify-content-center">
         <FormGroup>
-          <Form onSubmit={handleSubmit(onSubmit)} className = "d-flex flex-column">
-            <input 
-            type="text" 
-            name="name" 
-            placeholder="ingresa tu nombre"
+          <div className="header">
+            <img src={carrito} alt="" />
+            <h1>Registrate ahora y se parte de nosotros!</h1>
+          </div>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre"
+              ref={register({
+                required: {
+                  value: true,
+                  message: "Nombre requerido",
+                },
+              })}
             />
             <input
               type="email"
               name="email"
-              placeholder="ingresa tu email"
+              placeholder="Tu email"
               ref={register({
                 required: {
                   value: true,
@@ -37,7 +55,7 @@ function Register() {
               type="password"
               id="password"
               name="password"
-              placeholder="tu contraseña"
+              placeholder="Tu contraseña"
               ref={register({
                 required: {
                   value: true,
@@ -47,7 +65,7 @@ function Register() {
             />
             {errors?.password?.message}
             <button className="btn btn-primary" type="submit">
-              Registrarme
+              Registrate
             </button>
           </Form>
         </FormGroup>
@@ -56,4 +74,4 @@ function Register() {
   );
 }
 
-export default Register
+export default Register;
